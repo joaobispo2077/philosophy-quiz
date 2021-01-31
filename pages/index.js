@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import db from '../db.json';
 import Widget from '../src/components/Widget';
+import QuizBackground from '../src/components/QuizBackground';
+import GitHubCorner from '../src/components/GitHubCorner';
+import Footer from '../src/components/Footer';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -26,7 +29,7 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-    <BackgroundImage>
+    <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <Widget>
           <Widget.Content>
@@ -44,7 +47,9 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adip</p>
           </Widget.Content>
         </Widget>
+        {/* <Footer /> */}
       </QuizContainer>
-    </BackgroundImage>
+      {/* <GitHubCorner /> */}
+    </QuizBackground>
   )
 }
