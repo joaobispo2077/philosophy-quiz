@@ -9,6 +9,7 @@ import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Footer from '../src/components/Footer';
+import Input from '../src/components/Input';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -50,7 +51,7 @@ export default function Home() {
               router.push(`/quiz?name=${name}`);
             }}
             >
-              <input type="text" onChange={(e) => setName(e.target.value)} />
+              <Input name="username" type="text" onChange={(e) => setName(e.target.value)} placeholder="Digite o seu nome aqui" />
               <button type="submit" disabled={name.length === 0}>
                 Jogue agora!
               </button>
