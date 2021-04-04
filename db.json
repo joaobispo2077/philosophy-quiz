@@ -4,25 +4,25 @@
   "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
+      "image": "https://media.giphy.com/media/l2Je7OBPeIsC27cI0/giphy.gif",
+      "title": "Platão foi discipulo de qual outro filosofo?",
       "description": "Essa é pra aquecer",
       "answer": 2,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Aristotéles",
+        "Tales de Mileto",
+        "Sócrates",
+        "Heródoto"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://media.giphy.com/media/USIyGdyMSUU6aMm7W4/giphy.gif",
+      "title": "Heráclito de Eféso defendia qual teoria essencialista?",
+      "description": "O rio que tudo flui",
       "answer": 0,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+        "A única constante é a mudança",
+         "Nenhuma essência muda"
       ]
     }
   ],
