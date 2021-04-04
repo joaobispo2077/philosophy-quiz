@@ -20,7 +20,7 @@ const Button = styled.button`
     opacity: .5;
   }
   &:disabled {
-    background-color:  ${({ theme }) => theme.colors.mainBg};
+    background-color:  ${({ theme }) => theme.colors.secondary};
     cursor: not-allowed;
     opacity: 0.7;
   }

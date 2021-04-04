@@ -53,9 +53,9 @@ export default function Home() {
             }}
             >
               <Input name="username" value={name} type="text" onChange={(e) => setName(e.target.value)} placeholder="Digite o seu nome aqui" />
-              {/* <Button type="submit" disabled={name.length === 0}>
+              <Button type="submit" disabled={name.length === 0}>
                 Jogue agora!
-              </Button> */}
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
