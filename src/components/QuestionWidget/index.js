@@ -17,7 +17,7 @@ export default function QuestionWidget({
     totalQuestions,
     onSubmit,
   });
-  const [answer, setAnswer] = React.useState(0);
+  const [answer, setAnswer] = React.useState(undefined);
   const [answered, setAnswered] = React.useState(false);
 
   // React.useEffect(() => {
@@ -81,7 +81,7 @@ export default function QuestionWidget({
               );
             })}
 
-            <Button type="submit" onClick={() => setAnswered(true)}>
+            <Button type="submit" disabled={answer === undefined} onClick={() => setAnswered(true)}>
               Confirmar
             </Button>
 
