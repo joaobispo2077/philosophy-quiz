@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
@@ -38,16 +39,29 @@ function GameResult({ points }) {
   return (
     <Widget>
       <Widget.Header>
-        Fim de jogo
-      </Widget.Header>
-
-      <Widget.Content>
         Você acertou
         {' '}
         {points.filter((point) => point).length}
         {' '}
         questões
         , parabéns!
+      </Widget.Header>
+
+      <Widget.Content>
+        {points.map((point, index) => (point ? (
+          <div key={`a_${index}`}>
+            {index + 1}
+            {'º '}
+            - Acertou
+          </div>
+        )
+          : (
+            <div key={`b_${index}`}>
+              {index + 1}
+              {'º '}
+              - Errou
+            </div>
+          )))}
       </Widget.Content>
     </Widget>
   );
