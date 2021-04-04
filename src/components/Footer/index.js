@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import styled from 'styled-components';
 
 // src/components/Footer/index.js
@@ -29,16 +30,16 @@ export default function Footer(props) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FooterWrapper {...props}>
-      <a href="https://www.alura.com.br/">
-        <img src="https://www.alura.com.br/assets/img/alura-logo-white.1570550707.svg" alt="Logo Alura" />
+      <a href="https://github.com/joaobispo2077/philosophy-quiz">
+        <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="Acesse o repositório de código desse projeto" />
       </a>
       <p>
-        Orgulhosamente criado durante
+        Apoie esse projeto
         {' '}
-        a
+        dando uma estrela no
         {' '}
-        <a href="https://www.alura.com.br/">
-          <span>Imersão React da Alura</span>
+        <a href="https://github.com/joaobispo2077/philosophy-quiz">
+          <span>Github.</span>
         </a>
       </p>
     </FooterWrapper>

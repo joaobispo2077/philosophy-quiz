@@ -59,15 +59,15 @@ export default function Home() {
             </form>
           </Widget.Content>
         </Widget>
-        <Widget>
+        {/* <Widget>
           <Widget.Header>
             <h1>Filosofia Antiga</h1>
           </Widget.Header>
           <Widget.Content>
             <p>Lorem ipsum dolor sit amet, consectetur adip</p>
           </Widget.Content>
-        </Widget>
-        {/* <Footer /> */}
+        </Widget> */}
+        <Footer />
       </QuizContainer>
       {/* <GitHubCorner /> */}
     </QuizBackground>
