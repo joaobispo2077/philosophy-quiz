@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Widget from '../Widget';
 import Button from '../Button';
+import AlternativesForm from '../AlternativesForm';
 
 export default function QuestionWidget({
   question,
@@ -52,7 +53,7 @@ export default function QuestionWidget({
             {question.description}
           </p>
 
-          <form
+          <AlternativesForm
             onSubmit={(e) => {
               e.preventDefault();
               setTimeout(() => {
@@ -64,15 +65,19 @@ export default function QuestionWidget({
           >
             {question.alternatives.map((alternative, alternativeIndex) => {
               const alternativeId = `alternative__${alternativeIndex}`;
+              const alternativeStatus = answer === question.answer ? 'SUCCESS' : 'ERROR';
+              const isSelected = answer === alternativeIndex;
               return (
                 <Widget.Topic
                   as="label"
                   htmlFor={alternativeId}
                   key={`${alternativeId}`}
+                  data-selected={isSelected}
+                  data-status={answered && alternativeStatus}
                 >
                   <input
                     key={alternativeId}
-                    // style={{ display: 'none' }}
+                    style={{ display: 'none' }}
                     id={alternativeId}
                     onChange={() => setAnswer(alternativeIndex)}
                     name={`question__${questionIndex}`}
@@ -86,11 +91,11 @@ export default function QuestionWidget({
             <Button type="submit" disabled={answer === undefined} onClick={() => setAnswered(true)}>
               Confirmar
             </Button>
-
+            {/*
             {(answered && answer === question.answer) && (<div>Você acertou!</div>)}
-            {(answered && answer !== question.answer) && (<div>Você errou, estuda mais!</div>)}
+            {(answered && answer !== question.answer) && (<div>Você errou, estuda mais!</div>)} */}
 
-          </form>
+          </AlternativesForm>
         </Widget.Content>
       </Widget>
     </>
