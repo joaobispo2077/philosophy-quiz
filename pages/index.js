@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useRouter } from 'next/router';
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
@@ -32,23 +33,35 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const [name, setName] = useState('');
+  const router = useRouter();
   return (
     <QuizBackground backgroundImage={db.bg}>
 
       <QuizContainer>
         <Widget>
+          <Widget.Header>
+            <h1>Filosofia Antiga</h1>
+          </Widget.Header>
           <Widget.Content>
-            <Widget.Header>
-              <h1>Filosofia Antiga</h1>
-            </Widget.Header>
-            <p>Lorem ipsum dolor sit amet, consectetur adip</p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+
+              router.push(`/quiz?name=${name}`);
+            }}
+            >
+              <input type="text" onChange={(e) => setName(e.target.value)} />
+              <button type="submit" disabled={name.length === 0}>
+                Jogue agora!
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
+          <Widget.Header>
+            <h1>Filosofia Antiga</h1>
+          </Widget.Header>
           <Widget.Content>
-            <Widget.Header>
-              <h1>Filosofia Antiga</h1>
-            </Widget.Header>
             <p>Lorem ipsum dolor sit amet, consectetur adip</p>
           </Widget.Content>
         </Widget>
