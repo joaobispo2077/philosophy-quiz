@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import PropTypes from 'prop-types';
 import Widget from '../Widget';
 import Button from '../Button';
@@ -16,6 +17,13 @@ export default function QuestionWidget({
     totalQuestions,
     onSubmit,
   });
+  const [answer, setAnswer] = React.useState(0);
+  const [answered, setAnswered] = React.useState(false);
+
+  // React.useEffect(() => {
+
+  // }, [answered]);
+
   return (
     <>
       <Widget>
@@ -46,7 +54,10 @@ export default function QuestionWidget({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              onSubmit();
+              setTimeout(() => {
+                setAnswered(false);
+                onSubmit();
+              }, 2000);
             }}
           >
             {question.alternatives.map((alternative, alternativeIndex) => {
@@ -55,12 +66,13 @@ export default function QuestionWidget({
                 <Widget.Topic
                   as="label"
                   htmlFor={alternativeId}
-                  key={`w_${alternativeId}`}
+                  key={`${alternativeId}`}
                 >
                   <input
                     key={alternativeId}
                     // style={{ display: 'none' }}
                     id={alternativeId}
+                    onChange={() => setAnswer(alternativeIndex)}
                     name={`question__${questionIndex}`}
                     type="radio"
                   />
@@ -69,9 +81,13 @@ export default function QuestionWidget({
               );
             })}
 
-            <Button type="submit">
+            <Button type="submit" onClick={() => setAnswered(true)}>
               Confirmar
             </Button>
+
+            {(answered && answer === question.answer) && (<div>Você acertou!</div>)}
+            {(answered && answer !== question.answer) && (<div>Você errou, estuda mais!</div>)}
+
           </form>
         </Widget.Content>
       </Widget>
