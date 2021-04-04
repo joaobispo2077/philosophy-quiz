@@ -1,3 +1,4 @@
+/* eslint-disable react/no-typos */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 import React from 'react';
@@ -16,10 +17,14 @@ const InputBase = styled.input`
   margin-bottom: 25px;
 `;
 
-export default function Input(props) {
+export default function Input({ placeholder, onChange, ...props }) {
   return (
     <div>
-      <InputBase {...props} />
+      <InputBase
+        placeholder={placeholder}
+        onChange={onChange}
+        {...props}
+      />
     </div>
   );
 }
@@ -28,9 +33,9 @@ Input.defaultProps = {
   value: '',
 };
 
-Input.prototypes = {
+Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
