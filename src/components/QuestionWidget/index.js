@@ -10,6 +10,7 @@ export default function QuestionWidget({
   questionIndex,
   totalQuestions,
   onSubmit,
+  addPoints,
 }) {
   console.log({
     question,
@@ -55,6 +56,7 @@ export default function QuestionWidget({
             onSubmit={(e) => {
               e.preventDefault();
               setTimeout(() => {
+                addPoints(answer === question.answer);
                 setAnswered(false);
                 onSubmit();
               }, 2000);

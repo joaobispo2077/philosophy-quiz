@@ -34,6 +34,25 @@ const Spinner = styled.span`
 
 `;
 
+function GameResult({ points }) {
+  return (
+    <Widget>
+      <Widget.Header>
+        Fim de jogo
+      </Widget.Header>
+
+      <Widget.Content>
+        Você acertou
+        {' '}
+        {points.filter((point) => point).length}
+        {' '}
+        questões
+        , parabéns!
+      </Widget.Content>
+    </Widget>
+  );
+}
+
 function LoadingWidget() {
   return (
     <Widget>
@@ -62,6 +81,7 @@ export default function QuizPage() {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
+  const [points, setPoints] = React.useState([]);
 
   console.log(db.questions);
 
@@ -69,7 +89,7 @@ export default function QuizPage() {
     setTimeout(() => {
       console.log(screenStates.QUIZ);
       setScreenState(screenStates.QUIZ);
-    }, 1 * 4000);
+    }, 1 * 2000);
   }, []);
 
   function handleSubmitQuiz() {
@@ -81,6 +101,10 @@ export default function QuizPage() {
     }
   }
 
+  function addPoints(answer) {
+    setPoints(points.concat(answer));
+  }
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -90,13 +114,15 @@ export default function QuizPage() {
             question={question}
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
+            addPoints={addPoints}
             onSubmit={handleSubmitQuiz}
           />
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <div>Você acertou X questões, parabéns!</div>}
+        {screenState === screenStates.RESULT && (<GameResult points={points} />
+        )}
       </QuizContainer>
     </QuizBackground>
   );
