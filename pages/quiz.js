@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styled from 'styled-components';
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
@@ -7,6 +8,31 @@ import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import QuestionWidget from '../src/components/QuestionWidget';
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+`;
+const Spinner = styled.span`
+  
+
+  display: inline-block;
+  border: 4px solid  ${({ theme }) => theme.colors.contrastText};
+  border-left-color: ${({ theme }) => theme.colors.primary};;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: donut-spin 1.2s linear infinite;
+@keyframes donut-spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+  
+
+`;
 
 function LoadingWidget() {
   return (
@@ -16,7 +42,9 @@ function LoadingWidget() {
       </Widget.Header>
 
       <Widget.Content>
-        [Desafio do Loading]
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
       </Widget.Content>
     </Widget>
   );
@@ -41,7 +69,7 @@ export default function QuizPage() {
     setTimeout(() => {
       console.log(screenStates.QUIZ);
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 1 * 4000);
   }, []);
 
   function handleSubmitQuiz() {
