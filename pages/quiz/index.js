@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import db from '../../db.json';
 
 import Widget from '../../src/components/Widget';
@@ -37,7 +38,13 @@ const Spinner = styled.span`
 
 function GameResult({ points }) {
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      variants={{
+        show: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }}
+    >
       <Widget.Header>
         Você acertou
         {' '}

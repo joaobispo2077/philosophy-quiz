@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
@@ -41,7 +42,16 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg}>
 
       <QuizContainer>
-        <Widget>
+        <Widget
+          as={motion.section}
+          transitions={{ delay: 0.5, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '100%' },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>Filosofia Antiga</h1>
           </Widget.Header>
@@ -67,7 +77,16 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet, consectetur adip</p>
           </Widget.Content>
         </Widget> */}
-        <Footer />
+        <Footer
+          as={motion.footer}
+          transitions={{ delay: 0.5, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '100%' },
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       {/* <GitHubCorner /> */}
     </QuizBackground>
