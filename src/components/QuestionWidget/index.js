@@ -22,10 +22,6 @@ export default function QuestionWidget({
   const [answer, setAnswer] = React.useState(undefined);
   const [answered, setAnswered] = React.useState(false);
 
-  // React.useEffect(() => {
-
-  // }, [answered]);
-
   return (
     <>
       <Widget>
@@ -59,6 +55,7 @@ export default function QuestionWidget({
               setTimeout(() => {
                 addPoints(answer === question.answer);
                 setAnswered(false);
+                setAnswer(undefined);
                 onSubmit();
               }, 2000);
             }}
